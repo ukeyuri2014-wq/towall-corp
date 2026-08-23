@@ -9,7 +9,7 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="theme-color" content="#10243f">
-  <meta name="description" content="株式会社トワールの公式コーポレートサイトです。会社概要と事業内容をご案内します。">
+  <meta name="description" content="株式会社トワールの公式コーポレートサイトです。EC物販事業、会社概要、お取引に関する方針をご案内します。">
   <title>株式会社トワール | TOWALL Co., Ltd.</title>
   <style>
     :root {
@@ -56,9 +56,9 @@
     .brand-name small { color: var(--copper-light); font-family: var(--sans); font-size: .55rem; font-weight: 600; letter-spacing: .18em; }
     .global-nav { display: flex; align-items: center; gap: 34px; }
     .global-nav a { position: relative; color: rgba(255,255,255,.82); font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-decoration: none; }
-    .global-nav a:not(.nav-store)::after { position: absolute; right: 0; bottom: -9px; left: 0; height: 1px; background: var(--copper-light); content: ""; transform: scaleX(0); transform-origin: right; transition: transform .28s ease; }
+    .global-nav a:not(.nav-partners)::after { position: absolute; right: 0; bottom: -9px; left: 0; height: 1px; background: var(--copper-light); content: ""; transform: scaleX(0); transform-origin: right; transition: transform .28s ease; }
     .global-nav a:hover::after, .global-nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
-    .global-nav .nav-store { padding: 10px 16px; border: 1px solid rgba(255,255,255,.42); }
+    .global-nav .nav-partners { padding: 10px 16px; border: 1px solid rgba(255,255,255,.42); }
     .menu-button { display: none; width: 44px; height: 44px; padding: 0; border: 0; color: var(--white); background: transparent; cursor: pointer; }
     .menu-button span, .menu-button::before, .menu-button::after { display: block; width: 25px; height: 1px; margin: 7px auto; background: currentColor; content: ""; transition: transform .25s, opacity .25s; }
     .menu-button.is-open span { opacity: 0; }
@@ -116,6 +116,26 @@
     .business-content p { margin: 0; font-size: .95rem; }
     .business-content .button { align-self: flex-start; margin-top: 34px; color: var(--white); background: var(--navy-900); }
     .business-note { margin: 27px 0 0; color: var(--muted); font-size: .73rem; line-height: 1.7; }
+    .business-tags { display: flex; flex-wrap: wrap; gap: 9px; margin: 30px 0 0; padding: 0; list-style: none; }
+    .business-tags li { padding: 7px 11px; color: var(--blue-600); border: 1px solid rgba(45,101,149,.24); background: rgba(45,101,149,.045); font-size: .68rem; font-weight: 600; letter-spacing: .06em; }
+
+    .partners { padding: 145px 0 155px; background: var(--paper); }
+    .partners-head { display: grid; grid-template-columns: .82fr 1.18fr; gap: 90px; align-items: end; }
+    .partners-intro { margin: 0 0 8px; color: var(--text); font-size: .96rem; line-height: 2; }
+    .partners-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 70px; }
+    .partner-card { position: relative; min-height: 285px; padding: 39px 34px 36px; border: 1px solid var(--line); background: var(--white); }
+    .partner-card::before { position: absolute; inset: -1px auto -1px -1px; width: 3px; background: var(--copper); content: ""; transform: scaleY(0); transform-origin: bottom; transition: transform .35s ease; }
+    .partner-card:hover::before { transform: scaleY(1); }
+    .partner-number { display: block; margin-bottom: 42px; color: var(--copper); font-family: Georgia, serif; font-size: .74rem; letter-spacing: .16em; }
+    .partner-card h3 { margin: 0 0 18px; color: var(--ink); font-family: var(--serif); font-size: 1.14rem; font-weight: 600; letter-spacing: .08em; }
+    .partner-card p { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.95; }
+    .trade-flow { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 48px; border: 1px solid var(--line); background: var(--white); }
+    .trade-step { position: relative; min-height: 125px; padding: 25px 25px 23px; border-right: 1px solid var(--line); }
+    .trade-step:last-child { border-right: 0; }
+    .trade-step:not(:last-child)::after { position: absolute; top: 50%; right: -10px; z-index: 2; display: grid; width: 20px; height: 20px; place-items: center; color: var(--copper); background: var(--white); content: "›"; transform: translateY(-50%); }
+    .trade-step span { display: block; color: var(--blue-600); font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    .trade-step strong { display: block; margin-top: 10px; color: var(--ink); font-family: var(--serif); font-size: .9rem; font-weight: 600; letter-spacing: .06em; }
+    .partners-note { margin: 24px 0 0; color: var(--muted); font-size: .75rem; }
 
     .policy { position: relative; color: var(--white); background: var(--navy-950); overflow: hidden; }
     .policy-bg { position: absolute; inset: 0; opacity: .22; background-image: url("operations-desk.jpg"); background-position: center; background-size: cover; filter: saturate(.72); }
@@ -179,22 +199,30 @@
     @media (max-width: 900px) {
       .container { width: min(100% - 36px, 760px); }
       .site-header, .site-header.is-scrolled { height: 72px; }
+      .site-header.is-scrolled { backdrop-filter: none; }
       .menu-button { display: block; position: relative; z-index: 102; }
       .global-nav { position: fixed; inset: 0; z-index: 101; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 26px; padding: 90px 11vw; background: rgba(7,21,36,.985); opacity: 0; pointer-events: none; transform: translateY(-14px); transition: opacity .25s, transform .25s; }
       .global-nav.is-open { opacity: 1; pointer-events: auto; transform: none; }
       .global-nav a { font-family: var(--serif); font-size: 1.08rem; letter-spacing: .12em; }
-      .global-nav .nav-store { margin-top: 10px; font-family: var(--sans); font-size: .78rem; }
+      .global-nav .nav-partners { margin-top: 10px; font-family: var(--sans); font-size: .78rem; }
       .hero-copy { width: 82%; }
       .facts-grid { grid-template-columns: 1fr; }
       .fact { min-height: auto; padding: 22px 5px; border-left: 0; border-bottom: 1px solid rgba(255,255,255,.12); }
       .fact:last-child { border-right: 0; border-bottom: 0; }
-      .statement, .business, .message, .company { padding-block: 105px; }
-      .statement-grid, .message-grid, .company-layout, .news-grid { grid-template-columns: 1fr; gap: 48px; }
+      .statement, .business, .partners, .message, .company { padding-block: 105px; }
+      .statement-grid, .partners-head, .message-grid, .company-layout, .news-grid { grid-template-columns: 1fr; gap: 48px; }
       .statement-copy { padding-top: 0; }
       .business-head { display: block; }
       .business-head .section-lead { margin-top: 24px; }
       .business-panel { grid-template-columns: 1fr; }
       .business-image { min-height: 440px; }
+      .partners-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 52px; }
+      .partner-card { min-height: 0; }
+      .partner-number { margin-bottom: 25px; }
+      .trade-flow { grid-template-columns: 1fr 1fr; }
+      .trade-step:nth-child(2) { border-right: 0; }
+      .trade-step:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .trade-step:nth-child(2)::after { display: none; }
       .policy-inner { padding-block: 105px 115px; }
       .policy-grid { grid-template-columns: 1fr; }
       .policy-card { min-height: 0; }
@@ -213,20 +241,28 @@
       .hero::before { background: linear-gradient(90deg, rgba(7,21,36,.95), rgba(7,21,36,.64)), linear-gradient(0deg, rgba(7,21,36,.6), transparent 52%); }
       .hero-inner { min-height: 760px; padding-block: 120px 95px; align-items: end; }
       .hero-copy { width: 100%; }
-      .hero h1 { font-size: clamp(2.15rem, 10.8vw, 2.65rem); line-height: 1.5; letter-spacing: .04em; }
+      .hero h1 { font-size: clamp(2rem, 9vw, 2.3rem); line-height: 1.5; letter-spacing: .035em; }
       .hero h1 span { white-space: nowrap; }
       .hero-lead { line-height: 1.95; }
       .hero-actions { display: grid; grid-template-columns: 1fr; margin-top: 34px; }
       .button { width: 100%; }
       .hero-caption { right: 15px; bottom: 14px; }
       .scroll-indicator { display: none; }
-      .statement, .business, .message, .company { padding-block: 82px; }
+      .statement, .business, .partners, .message, .company { padding-block: 82px; }
       .section-title { font-size: 2rem; }
       .statement-title { font-size: 2.1rem; }
       .statement-grid { gap: 34px; }
       .business-head { margin-bottom: 40px; }
       .business-image { min-height: 320px; }
       .business-content { padding: 38px 24px 42px; }
+      .partners-head { gap: 30px; }
+      .partners-grid { margin-top: 38px; }
+      .partner-card { padding: 31px 24px 33px; }
+      .trade-flow { grid-template-columns: 1fr; margin-top: 32px; }
+      .trade-step, .trade-step:nth-child(2) { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .trade-step:last-child { border-bottom: 0; }
+      .trade-step:not(:last-child)::after { top: auto; right: 22px; bottom: -10px; transform: rotate(90deg); }
+      .trade-step:nth-child(2)::after { display: grid; }
       .policy-inner { padding-block: 82px 94px; }
       .policy-grid { margin-top: 42px; }
       .policy-card { padding: 30px 24px 34px; }
@@ -255,7 +291,7 @@
       <a class="brand" href="#top" aria-label="株式会社トワール トップへ"><span class="brand-mark" aria-hidden="true">TW</span><span class="brand-name">株式会社トワール<small>TOWALL CO., LTD.</small></span></a>
       <button class="menu-button" id="menu-button" type="button" aria-label="メニューを開く" aria-controls="global-nav" aria-expanded="false"><span></span></button>
       <nav class="global-nav" id="global-nav" aria-label="メインナビゲーション">
-        <a href="#business">事業内容</a><a href="#policy">運営方針</a><a href="#message">代表挨拶</a><a href="#company">会社概要</a><a class="nav-store" href="https://www.amazon.co.jp/sp?seller=AV96N4MU4ARHJ" target="_blank" rel="noopener noreferrer">monomoshop ↗</a>
+        <a href="#business">事業内容</a><a href="#partners">お取引について</a><a href="#policy">運営方針</a><a href="#message">代表挨拶</a><a href="#company">会社概要</a><a class="nav-partners" href="#partners">企業のご担当者様へ</a>
       </nav>
     </div>
   </header>
@@ -265,10 +301,10 @@
       <div class="hero-media" id="hero-media" aria-hidden="true"></div>
       <div class="container hero-inner">
         <div class="hero-copy">
-          <p class="hero-kicker">E-commerce business</p>
-          <h1 id="hero-title"><span>一つひとつを、</span><span>誠実に届ける。</span></h1>
-          <p class="hero-lead">株式会社トワールは、Amazonマーケットプレイスにてオンラインストア「monomoshop」を運営する会社です。</p>
-          <div class="hero-actions"><a class="button button-primary" href="#business">事業内容を見る <span class="arrow" aria-hidden="true">↓</span></a><a class="button button-ghost" href="https://www.amazon.co.jp/sp?seller=AV96N4MU4ARHJ" target="_blank" rel="noopener noreferrer">ストアを見る <span class="arrow" aria-hidden="true">↗</span></a></div>
+          <p class="hero-kicker">E-commerce &amp; business partnership</p>
+          <h1 id="hero-title"><span>仕入れ先とともに、</span><span>信頼を積み重ねる。</span></h1>
+          <p class="hero-lead">株式会社トワールは、Amazonマーケットプレイスを主な販売チャネルとして、国内メーカー・卸売事業者様から仕入れた商品を全国のお客様へお届けするEC事業会社です。</p>
+          <div class="hero-actions"><a class="button button-primary" href="#business">事業内容を見る <span class="arrow" aria-hidden="true">↓</span></a><a class="button button-ghost" href="#partners">お取引について <span class="arrow" aria-hidden="true">↓</span></a></div>
         </div>
       </div>
       <p class="hero-caption">BUSINESS IMAGE / イメージ写真</p>
@@ -282,16 +318,35 @@
     </div></section>
 
     <section class="statement" aria-labelledby="statement-title"><div class="container statement-grid">
-      <div data-reveal="left"><p class="eyebrow">About us</p><h2 class="statement-title" id="statement-title">ECを通じて、<br><strong>確かな取引</strong>を<br>積み重ねる。</h2></div>
-      <div class="statement-copy" data-reveal="right"><p>株式会社トワールは、個人事業として運営してきたEC物販事業を引き継ぎ、2026年5月に設立しました。</p><p>オンラインでのお買い物が日常となった今、販売事業者には、商品情報を正確に伝え、ご注文に対して誠実に対応する姿勢が求められます。当社は、目の前の業務を一つひとつ着実に行い、継続して信頼いただける事業運営を目指します。</p></div>
+      <div data-reveal="left"><p class="eyebrow">About us</p><h2 class="statement-title" id="statement-title">販売の先にある、<br><strong>長いお取引</strong>を<br>大切にする。</h2></div>
+      <div class="statement-copy" data-reveal="right"><p>株式会社トワールは、個人事業として運営してきたEC物販事業を引き継ぎ、2026年5月に設立しました。</p><p>商品をお客様へ正確に届けることはもちろん、メーカー・卸売事業者様からお預かりする商品情報や取引条件を丁寧に確認し、一つひとつの取引を着実に積み重ねることを大切にしています。</p></div>
     </div></section>
 
     <section class="business" id="business" aria-labelledby="business-title"><div class="container">
       <div class="business-head"><div data-reveal><p class="eyebrow">Our business</p><h2 class="section-title" id="business-title">事業内容</h2></div><p class="section-lead" data-reveal="right">当社が行う事業を、事実に基づいて簡潔にご案内します。</p></div>
       <article class="business-panel" data-reveal>
         <div class="business-image"><img src="packing-work.jpg" alt="オンライン販売における梱包業務のイメージ" width="1536" height="1024" loading="lazy"><p class="image-note">イメージ写真</p></div>
-        <div class="business-content"><span class="business-number">01 / ONLINE RETAIL</span><h3>EC物販事業</h3><p>Amazonマーケットプレイスにて、オンラインストア「monomoshop」を運営しています。個人事業として行ってきた同事業を、法人として承継しました。</p><a class="button" href="https://www.amazon.co.jp/sp?seller=AV96N4MU4ARHJ" target="_blank" rel="noopener noreferrer">monomoshopを見る <span class="arrow" aria-hidden="true">↗</span></a><p class="business-note">リンク先はAmazon.co.jpのストアフロントです。</p></div>
+        <div class="business-content"><span class="business-number">01 / ONLINE RETAIL</span><h3>EC物販事業</h3><p>Amazonマーケットプレイスを主な販売チャネルとして、FBAと自社発送を組み合わせたEC物販事業を運営しています。個人事業として行ってきた同事業を、法人として承継しました。</p><ul class="business-tags" aria-label="主な取扱分野"><li>生活家電</li><li>日用品</li><li>ホビー</li><li>ヘルス＆ビューティー</li></ul><p class="business-note">商品の特性と販売条件を確認し、適切な販売・出荷方法を選択します。</p></div>
       </article>
+    </div></section>
+
+    <section class="partners" id="partners" aria-labelledby="partners-title"><div class="container">
+      <div class="partners-head">
+        <div data-reveal="left"><p class="eyebrow">For business partners</p><h2 class="section-title" id="partners-title">お取引をご検討の<br>企業様へ</h2></div>
+        <p class="partners-intro" data-reveal="right">当社では、メーカー・卸売事業者様との新たなお取引を検討しています。商品特性、販売可能な販路、ロット、納期などを確認し、双方が安心して継続できる取引を目指します。</p>
+      </div>
+      <div class="partners-grid">
+        <article class="partner-card" data-reveal><span class="partner-number">01 / DATA</span><h3>販売状況を踏まえた仕入れ</h3><p>商品ごとの需要や販売状況を確認し、継続性を考慮した仕入れ判断に努めます。</p></article>
+        <article class="partner-card delay-1" data-reveal><span class="partner-number">02 / POLICY</span><h3>取引条件・販売方針の確認</h3><p>販売可能な販路、価格、画像・商標の利用条件などを事前に確認し、合意した内容を大切にします。</p></article>
+        <article class="partner-card delay-2" data-reveal><span class="partner-number">03 / COMMUNICATION</span><h3>必要情報の丁寧な共有</h3><p>商品情報、ロット、納期、終売や変更予定など、取引に必要な情報を確認しながら進めます。</p></article>
+      </div>
+      <div class="trade-flow" aria-label="お取引開始までの流れ" data-reveal>
+        <div class="trade-step"><span>Step 01</span><strong>商品・取引条件の確認</strong></div>
+        <div class="trade-step"><span>Step 02</span><strong>見積・販売条件の確認</strong></div>
+        <div class="trade-step"><span>Step 03</span><strong>初回発注・販売開始</strong></div>
+        <div class="trade-step"><span>Step 04</span><strong>実績確認・継続取引</strong></div>
+      </div>
+      <p class="partners-note">お取引に関するご連絡は、当社からお送りしたメールに記載の窓口へご返信ください。確認後、担当者よりご案内します。</p>
     </div></section>
 
     <section class="policy" id="policy" aria-labelledby="policy-title">
@@ -309,7 +364,7 @@
 
     <section class="message" id="message" aria-labelledby="message-title"><div class="container message-grid">
       <div class="message-aside" data-reveal="left"><p class="eyebrow">Message</p><h2 class="section-title" id="message-title">代表挨拶</h2></div>
-      <div class="message-body" data-reveal="right"><p>当社のウェブサイトをご覧いただき、ありがとうございます。</p><p>株式会社トワールは、個人事業として取り組んできたEC物販事業を基礎として設立した会社です。Amazonマーケットプレイスのオンラインストア運営を通じて、お客様との一つひとつの取引に誠実に向き合うことを大切にしています。</p><p>変化の大きいEC分野においても、基本をおろそかにせず、着実な事業運営を継続してまいります。今後とも、株式会社トワールをよろしくお願い申し上げます。</p><div class="signature"><span>株式会社トワール　代表取締役</span><strong>嶺田 善弘</strong></div></div>
+      <div class="message-body" data-reveal="right"><p>当社のウェブサイトをご覧いただき、ありがとうございます。</p><p>株式会社トワールは、個人事業として取り組んできたEC物販事業を基礎として設立した会社です。お客様への対応だけでなく、商品を供給いただくメーカー・卸売事業者様との信頼関係も大切にしています。</p><p>変化の大きいEC分野においても、取引条件の確認や必要な情報共有といった基本をおろそかにせず、着実な事業運営を継続してまいります。今後とも、株式会社トワールをよろしくお願い申し上げます。</p><div class="signature"><span>株式会社トワール　代表取締役</span><strong>嶺田 善弘</strong></div></div>
     </div></section>
 
     <section class="company" id="company" aria-labelledby="company-title"><div class="container">
@@ -322,8 +377,9 @@
           <div class="company-row"><dt>設立</dt><dd>2026年5月19日</dd></div>
           <div class="company-row"><dt>代表者</dt><dd>代表取締役　嶺田 善弘</dd></div>
           <div class="company-row"><dt>本店所在地</dt><dd><img class="address-image" src="address.png" alt="本店所在地" width="648" height="112" loading="lazy"></dd></div>
-          <div class="company-row"><dt>事業内容</dt><dd>Amazonマーケットプレイスでのオンラインストア「monomoshop」運営</dd></div>
-          <div class="company-row"><dt>ストアフロント</dt><dd><a href="https://www.amazon.co.jp/sp?seller=AV96N4MU4ARHJ" target="_blank" rel="noopener noreferrer">monomoshop（Amazon.co.jp）↗</a></dd></div>
+          <div class="company-row"><dt>事業内容</dt><dd>EC物販事業</dd></div>
+          <div class="company-row"><dt>主な販売チャネル</dt><dd>Amazon.co.jp</dd></div>
+          <div class="company-row"><dt>主な取扱分野</dt><dd>生活家電・日用品・ホビー・ヘルス＆ビューティー</dd></div>
         </dl>
       </div>
     </div></section>
@@ -335,7 +391,7 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-main"><div class="footer-brand">株式会社トワール<small>TOWALL CO., LTD.</small></div><nav class="footer-nav" aria-label="フッターナビゲーション"><a href="#business">事業内容</a><a href="#policy">運営方針</a><a href="#message">代表挨拶</a><a href="#company">会社概要</a><a href="https://www.amazon.co.jp/sp?seller=AV96N4MU4ARHJ" target="_blank" rel="noopener noreferrer">monomoshop ↗</a></nav></div>
+    <div class="container footer-main"><div class="footer-brand">株式会社トワール<small>TOWALL CO., LTD.</small></div><nav class="footer-nav" aria-label="フッターナビゲーション"><a href="#business">事業内容</a><a href="#partners">お取引について</a><a href="#policy">運営方針</a><a href="#message">代表挨拶</a><a href="#company">会社概要</a></nav></div>
     <div class="container footer-bottom"><small>&copy; 2026 TOWALL Co., Ltd. All Rights Reserved.</small><span>Corporate Website</span></div>
   </footer>
 
